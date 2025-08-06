@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Scraper by Kumar</title>
   <style>
@@ -49,11 +49,12 @@
     button {
       background-color: #3a86ff;
       color: #fff;
+      cursor: pointer;
     }
 
-    button.copy {
-      background-color: #4caf50;
-    }
+    button.copy { background-color: #4caf50; }
+    button.download { background-color: #ff9800; }
+    button.reset { background-color: #f44336; }
 
     .loader {
       text-align: center;
@@ -100,20 +101,31 @@
       margin-bottom: 0.5rem;
       border-radius: 4px;
     }
+
+    .info-box {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>BY KUMAR</h1>
-    <p>Scraping Web Edukasi (Versi Ringan)</p>
+    <p>Scraping Web Edukasi (Fitur Lengkap)</p>
   </header>
 
   <main>
     <input type="text" id="urlInput" placeholder="Masukkan URL (https://...)">
-    <button onclick="scrape()">Ambil HTML</button>
-    <button class="copy" onclick="copyHTML()">Copy HTML</button>
+    <button onclick="scrape()">🔍 Ambil HTML</button>
+    <button class="copy" onclick="copyHTML()">📋 Copy HTML</button>
+    <button class="download" onclick="downloadHTML()">⬇️ Download HTML</button>
+    <button class="reset" onclick="resetAll()">♻️ Reset</button>
 
     <div class="loader" id="loader">⏳ Mengambil data...</div>
+
+    <div class="info-box" id="pageTitleInfo"></div>
+    <div class="info-box" id="imageCountInfo"></div>
 
     <div class="container">
       <div class="column">
@@ -128,14 +140,26 @@
   </main>
 
   <script>
+    const urlInput = document.getElementById("urlInput");
+    urlInput.focus();
+    urlInput.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        scrape();
+      }
+    });
+
     async function scrape() {
-      const url = document.getElementById("urlInput").value.trim();
+      const url = urlInput.value.trim();
       const htmlOutput = document.getElementById("htmlOutput");
       const imageOutput = document.getElementById("imageOutput");
       const loader = document.getElementById("loader");
+      const pageTitleInfo = document.getElementById("pageTitleInfo");
+      const imageCountInfo = document.getElementById("imageCountInfo");
 
       htmlOutput.textContent = "";
       imageOutput.innerHTML = "";
+      pageTitleInfo.textContent = "";
+      imageCountInfo.textContent = "";
       loader.style.display = "block";
 
       if (!url.startsWith("http")) {
@@ -151,7 +175,12 @@
 
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
+
+        const title = doc.querySelector("title")?.innerText || "Tanpa Judul";
+        pageTitleInfo.textContent = `📄 Judul halaman: ${title}`;
+
         const imgs = doc.querySelectorAll("img");
+        imageCountInfo.textContent = `🖼️ Gambar ditemukan: ${imgs.length}`;
 
         imgs.forEach(img => {
           const src = img.getAttribute("src");
@@ -164,7 +193,7 @@
         });
 
       } catch (err) {
-        htmlOutput.textContent = "Gagal mengambil HTML.";
+        htmlOutput.textContent = "❌ Gagal mengambil HTML.";
         console.error(err);
       } finally {
         loader.style.display = "none";
@@ -174,8 +203,26 @@
     function copyHTML() {
       const html = document.getElementById("htmlOutput").textContent;
       navigator.clipboard.writeText(html).then(() => {
-        alert("✅ HTML disalin!");
+        alert("✅ HTML disalin ke clipboard!");
       });
+    }
+
+    function downloadHTML() {
+      const html = document.getElementById("htmlOutput").textContent;
+      const blob = new Blob([html], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "hasil-scraping.html";
+      a.click();
+    }
+
+    function resetAll() {
+      document.getElementById("urlInput").value = "";
+      document.getElementById("htmlOutput").textContent = "";
+      document.getElementById("imageOutput").innerHTML = "";
+      document.getElementById("pageTitleInfo").textContent = "";
+      document.getElementById("imageCountInfo").textContent = "";
+      urlInput.focus();
     }
   </script>
 </body>
