@@ -1,226 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web Scraper by Kumar</title>
   <style>
-    :root {
-      --bg: #121212;
-      --card: #1f1f1f;
-      --primary: #3a86ff;
-      --success: #4caf50;
-      --danger: #e63946;
-      --text: #f1f1f1;
-      --border: #333;
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
     }
 
     header {
-      background: var(--card);
-      padding: 1rem 2rem;
+      background-color: #1f1f1f;
+      padding: 1rem;
       text-align: center;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     header h1 {
-      font-size: 2rem;
-      letter-spacing: 1px;
-      margin-bottom: 0.2rem;
+      font-size: 1.5rem;
+      margin: 0;
     }
 
     header p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #aaa;
     }
 
     main {
-      flex: 1;
       padding: 1rem;
-      max-width: 1200px;
-      margin: auto;
     }
 
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .input-container input {
-      padding: 0.9rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background-color: #222;
-      color: var(--text);
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-
-    .input-container input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 2px #3a86ff50;
-    }
-
-    .input-container button {
-      padding: 0.8rem;
-      font-size: 1rem;
+    input, button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
+      font-size: 1rem;
     }
 
-    .input-container .scrape-btn {
-      background-color: var(--primary);
-      color: white;
+    input {
+      background-color: #222;
+      color: #fff;
     }
 
-    .input-container .scrape-btn:hover {
-      background-color: #265fd0;
+    button {
+      background-color: #3a86ff;
+      color: #fff;
     }
 
-    .input-container .copy-btn {
-      background-color: var(--success);
-      color: white;
+    button.copy {
+      background-color: #4caf50;
     }
 
-    .input-container .copy-btn:hover {
-      background-color: #2e7d32;
+    .loader {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      display: none;
     }
 
-    .columns {
+    .container {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
 
     @media (min-width: 768px) {
-      .columns {
+      .container {
         flex-direction: row;
       }
     }
 
     .column {
       flex: 1;
-      background-color: var(--card);
+      background-color: #1e1e1e;
       padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #00000033;
+      border-radius: 8px;
       overflow-y: auto;
       max-height: 70vh;
-      transition: var(--transition);
     }
 
     .column h3 {
-      font-size: 1.1rem;
       margin-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.3rem;
+      font-size: 1rem;
+      border-bottom: 1px solid #333;
     }
 
     pre {
       white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 0.9rem;
+      word-wrap: break-word;
+      font-size: 0.85rem;
     }
 
-    .images img {
+    img {
       max-width: 100%;
-      margin: 0.5rem 0;
-      border-radius: 8px;
-      border: 1px solid #333;
-    }
-
-    .loader {
-      display: none;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-
-    .loader div {
-      width: 30px;
-      height: 30px;
-      border: 3px solid var(--primary);
-      border-top: 3px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .snackbar {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 6px;
-      box-shadow: 0 0 10px #000;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.5s ease;
-      z-index: 99;
-    }
-
-    .snackbar.show {
-      opacity: 1;
-      pointer-events: auto;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>BY KUMAR</h1>
-    <p>Scraping Web Edukasi • HTML & Gambar</p>
+    <p>Scraping Web Edukasi (Versi Ringan)</p>
   </header>
 
   <main>
-    <div class="input-container">
-      <input type="text" id="urlInput" placeholder="Tempel URL web di sini (https://...)" />
-      <button class="scrape-btn" onclick="scrape()">🔍 Ambil HTML</button>
-      <button class="copy-btn" onclick="copyHTML()">📋 Copy HTML</button>
-    </div>
+    <input type="text" id="urlInput" placeholder="Masukkan URL (https://...)">
+    <button onclick="scrape()">Ambil HTML</button>
+    <button class="copy" onclick="copyHTML()">Copy HTML</button>
 
-    <div class="loader" id="loader"><div></div></div>
+    <div class="loader" id="loader">⏳ Mengambil data...</div>
 
-    <div class="columns">
+    <div class="container">
       <div class="column">
         <h3>Hasil HTML</h3>
         <pre id="htmlOutput"></pre>
       </div>
-      <div class="column images">
-        <h3>Gambar yang Ditemukan</h3>
+      <div class="column">
+        <h3>Gambar</h3>
         <div id="imageOutput"></div>
       </div>
     </div>
   </main>
-
-  <div class="snackbar" id="snackbar">Disalin ke clipboard!</div>
 
   <script>
     async function scrape() {
@@ -231,18 +136,17 @@
 
       htmlOutput.textContent = "";
       imageOutput.innerHTML = "";
+      loader.style.display = "block";
 
       if (!url.startsWith("http")) {
-        alert("⚠️ URL tidak valid. Harus diawali dengan http:// atau https://");
+        loader.style.display = "none";
+        alert("URL harus diawali http atau https");
         return;
       }
 
-      loader.style.display = "flex";
-
       try {
-        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-        const data = await res.json();
-        const html = data.contents;
+        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`);
+        const html = await res.text();
         htmlOutput.textContent = html;
 
         const parser = new DOMParser();
@@ -260,7 +164,7 @@
         });
 
       } catch (err) {
-        htmlOutput.textContent = "❌ Gagal mengambil HTML.";
+        htmlOutput.textContent = "Gagal mengambil HTML.";
         console.error(err);
       } finally {
         loader.style.display = "none";
@@ -270,9 +174,7 @@
     function copyHTML() {
       const html = document.getElementById("htmlOutput").textContent;
       navigator.clipboard.writeText(html).then(() => {
-        const snackbar = document.getElementById("snackbar");
-        snackbar.classList.add("show");
-        setTimeout(() => snackbar.classList.remove("show"), 3000);
+        alert("✅ HTML disalin!");
       });
     }
   </script>
