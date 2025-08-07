@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grup WA Kami</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="img/wa.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/whatsapp.png" />
 </head>
 <body>
   <div class="container">
-    <h1>📱 Grup WA Kami</h1>
+    <h1>📱 Grup WhatsApp Kami</h1>
+
+    <p id="music-note" class="music-info">🎵 Pencet layar untuk memutar lagu latar...</p>
 
     <div class="group-photo">
-      <img src="img/grup.jpg" alt="Foto Grup">
+      <img src="img/grup.jpg" alt="Foto Grup" />
     </div>
 
     <h2>👤 Anggota Grup</h2>
@@ -21,43 +23,46 @@
         <h3>Irpan</h3>
         <p>📞 +62 878-7608-2604</p>
         <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-          <img src="img/ig.png" alt="Instagram">
+          <img src="img/instagram.png" alt="Instagram" />
         </a>
       </div>
       <div class="member">
         <h3>Ripan</h3>
         <p>📞 +62 838-4112-1840</p>
         <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-          <img src="img/ig.png" alt="Instagram">
+          <img src="img/instagram.png" alt="Instagram" />
         </a>
       </div>
       <div class="member">
         <h3>Ropi</h3>
         <p>📞 +62 812-1282-4475</p>
         <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-          <img src="img/ig.png" alt="Instagram">
+          <img src="img/instagram.png" alt="Instagram" />
         </a>
       </div>
       <div class="member">
         <h3>Abdul</h3>
         <p>📞 +62 857-9496-3647</p>
         <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-          <img src="img/ig.png" alt="Instagram">
+          <img src="img/instagram.png" alt="Instagram" />
         </a>
       </div>
     </div>
   </div>
 
   <audio id="bg-music" loop>
-    <source src="music/bg-music.mp3" type="audio/mpeg">
+    <source src="music/bg-music.mp3" type="audio/mpeg" />
     Browser tidak mendukung audio.
   </audio>
 
   <script>
-    // Putar musik setelah klik pertama
+    // Play music after first user interaction
+    const musicInfo = document.getElementById("music-note");
     window.addEventListener("click", function playMusic() {
       const audio = document.getElementById("bg-music");
-      audio.play().catch(() => {});
+      audio.play().then(() => {
+        if (musicInfo) musicInfo.style.display = "none";
+      }).catch(() => {});
       window.removeEventListener("click", playMusic);
     });
   </script>
