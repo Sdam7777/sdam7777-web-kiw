@@ -1,90 +1,65 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dokumentasi Grup WA</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grup WA Kami</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="img/wa.png">
 </head>
 <body>
-  <audio autoplay loop hidden>
+  <div class="container">
+    <h1>📱 Grup WA Kami</h1>
+
+    <div class="group-photo">
+      <img src="img/grup.jpg" alt="Foto Grup">
+    </div>
+
+    <h2>👤 Anggota Grup</h2>
+    <div class="members">
+      <div class="member">
+        <h3>Irpan</h3>
+        <p>📞 +62 878-7608-2604</p>
+        <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
+          <img src="img/ig.png" alt="Instagram">
+        </a>
+      </div>
+      <div class="member">
+        <h3>Ripan</h3>
+        <p>📞 +62 838-4112-1840</p>
+        <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
+          <img src="img/ig.png" alt="Instagram">
+        </a>
+      </div>
+      <div class="member">
+        <h3>Ropi</h3>
+        <p>📞 +62 812-1282-4475</p>
+        <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
+          <img src="img/ig.png" alt="Instagram">
+        </a>
+      </div>
+      <div class="member">
+        <h3>Abdul</h3>
+        <p>📞 +62 857-9496-3647</p>
+        <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
+          <img src="img/ig.png" alt="Instagram">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
     <source src="music/bg-music.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
+    Browser tidak mendukung audio.
   </audio>
 
-  <header>
-    <h1> 😹 Dokumentasi Grup WhatsApp</h1>
-    <p class="subtitle">Satu grup, banyak JEMBUT.</p>
-  </header>
-
-  <main class="container">
-    <section class="group-photo">
-      <img src="img/grup.jpg" alt="Foto Grup" />
-    </section>
-
-    <section class="members">
-      <h2>👥 Anggota Grup PUKI</h2>
-      <div class="member-grid">
-        <div class="member-card">
-          <h3>Abdul</h3>
-          <p>
-            <a href="https://wa.me/6285794963647" target="_blank">
-              <img src="img/whatsapp.png" alt="WA" class="icon"> +62 857-9496-3647
-            </a>
-          </p>
-          <p>
-            <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-              <img src="img/instagram.png" alt="IG" class="icon"> @srepet_bletak
-            </a>
-          </p>
-        </div>
-        <div class="member-card">
-          <h3>Irpan</h3>
-          <p>
-            <a href="https://wa.me/6287876082604" target="_blank">
-              <img src="img/whatsapp.png" alt="WA" class="icon"> +62 878-7608-2604
-            </a>
-          </p>
-          <p>
-            <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-              <img src="img/instagram.png" alt="IG" class="icon"> @fanz.world_
-            </a>
-          </p>
-        </div>
-        <div class="member-card">
-          <h3>Ropi</h3>
-          <p>
-            <a href="https://wa.me/6281212824475" target="_blank">
-              <img src="img/whatsapp.png" alt="WA" class="icon"> +62 812-1282-4475
-            </a>
-          </p>
-          <p>
-            <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-              <img src="img/instagram.png" alt="IG" class="icon"> @scdltx
-            </a>
-          </p>
-        </div>
-        <div class="member-card">
-          <h3>Ripan</h3>
-          <p>
-            <a href="https://wa.me/6283841121840" target="_blank">
-              <img src="img/whatsapp.png" alt="WA" class="icon"> +62 838-4112-1840
-            </a>
-          </p>
-          <p>
-            <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-              <img src="img/instagram.png" alt="IG" class="icon"> @vanzhazatt13_
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Grup WA • Dibuat dengan JEMBUT DAN KANJUT</p>
-  </footer>
+  <script>
+    // Putar musik setelah klik pertama
+    window.addEventListener("click", function playMusic() {
+      const audio = document.getElementById("bg-music");
+      audio.play().catch(() => {});
+      window.removeEventListener("click", playMusic);
+    });
+  </script>
 </body>
-  </html>
-  
+</html>
