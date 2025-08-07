@@ -1,93 +1,100 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #cce7ff, #e3f2fd);
   margin: 0;
-  padding: 0;
+  font-family: sans-serif;
+  background: #e0f2ff;
   color: #222;
+  transition: background 0.5s, color 0.5s;
+}
+
+.dark {
+  background: #111;
+  color: #eee;
 }
 
 .container {
+  padding: 1.5rem;
   max-width: 800px;
   margin: auto;
-  padding: 20px;
   text-align: center;
 }
 
 h1 {
-  font-size: 2.4em;
-  color: #0d47a1;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
+  color: #0077cc;
 }
 
-h2 {
-  color: #1565c0;
+#toggleMode {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 0.4rem 0.8rem;
+  background: #0077cc;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .group-photo img {
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  margin-bottom: 25px;
+  border-radius: 15px;
+  margin-bottom: 1rem;
 }
 
-.music-info {
-  font-size: 1em;
-  margin: 15px 0;
-  color: #0077cc;
-  animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
-}
-
-.members {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.member-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .member {
-  background: #ffffff;
-  padding: 15px;
-  width: 42%;
-  min-width: 160px;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
 }
 
 .member:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
-.member h3 {
-  margin-top: 0;
-  color: #0d47a1;
+.dark .member {
+  background: #222;
 }
 
-.member p {
-  margin: 8px 0;
-  color: #444;
+.icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
-.member img {
-  width: 28px;
-  margin-top: 5px;
-  transition: opacity 0.3s;
+.nickname {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #0077cc;
 }
 
-.member img:hover {
-  opacity: 0.7;
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-@media (max-width: 600px) {
-  .member {
-    width: 100%;
+.music-playing {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #00c3ff;
   }
+  100% {
+    box-shadow: 0 0 20px #00c3ff, 0 0 40px #00c3ff;
   }
+}
