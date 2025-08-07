@@ -1,6 +1,9 @@
-body.dark {
-  background-color: #121212;
-  color: #f0f0f0;
+body {
+  background-color: #f9fbfd;
+  color: #222;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -9,41 +12,69 @@ body.dark {
   margin: auto;
 }
 
+h1 {
+  text-align: center;
+  color: #1e88e5;
+}
+
 .group-photo img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 700px;
+  display: block;
+  margin: 20px auto;
   border-radius: 10px;
-  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .member {
-  background: #1e1e1e;
-  border-radius: 10px;
+  background: #fff;
+  border-left: 5px solid #42a5f5;
   padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.05);
-  transition: transform 0.2s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .member:hover {
+  background: #e3f2fd;
   transform: scale(1.01);
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   vertical-align: middle;
-  margin: 5px 5px 0 0;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
 .nickname {
   font-style: italic;
+  color: #0d47a1;
   margin-top: 5px;
-  color: #90caf9;
 }
 
 footer {
   text-align: center;
   padding: 20px;
   font-size: 14px;
-  color: #aaa;
+  color: #777;
+  margin-top: 30px;
+}
+
+.music-playing {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { background-color: #f9fbfd; }
+  50% { background-color: #e3f2fd; }
+  100% { background-color: #f9fbfd; }
 }
