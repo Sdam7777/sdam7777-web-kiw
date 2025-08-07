@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>😹 Dokumentasi Grup WA</title>
+  <title>Dokumentasi Grup WA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="dark">
+<body>
   <div class="container">
-    <h1>😹 Dokumentasi Grup WA</h1>
-    <p id="music-note">📌 Pencet layar GOBLOK...</p>
-    
+    <h1>😹 Dokumentasi Grup WhatsApp</h1>
+    <p id="music-note">📌 Ketuk layar GOBLOG PEPEK...</p>
+
     <div class="group-photo">
       <img src="img/grup.jpg" alt="Foto Grup" />
     </div>
@@ -19,9 +19,9 @@
       <div class="member" onclick="showNickname('Irpan')">
         <strong>Irpan</strong><br>
         📞 +62 878-7608-2604<br>
-        <img src="img/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
         <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-          <img src="img/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" class="icon" alt="IG" />
         </a>
         <p id="nick-Irpan" class="nickname"></p>
       </div>
@@ -29,9 +29,9 @@
       <div class="member" onclick="showNickname('Ripan')">
         <strong>Ripan</strong><br>
         📞 +62 838-4112-1840<br>
-        <img src="img/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
         <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-          <img src="img/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" class="icon" alt="IG" />
         </a>
         <p id="nick-Ripan" class="nickname"></p>
       </div>
@@ -39,9 +39,9 @@
       <div class="member" onclick="showNickname('Ropi')">
         <strong>Ropi</strong><br>
         📞 +62 812-1282-4475<br>
-        <img src="img/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
         <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-          <img src="img/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" class="icon" alt="IG" />
         </a>
         <p id="nick-Ropi" class="nickname"></p>
       </div>
@@ -49,9 +49,9 @@
       <div class="member" onclick="showNickname('Abdul')">
         <strong>Abdul</strong><br>
         📞 +6285794963647<br>
-        <img src="img/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
         <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-          <img src="img/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" class="icon" alt="IG" />
         </a>
         <p id="nick-Abdul" class="nickname"></p>
       </div>
@@ -70,12 +70,11 @@
   <script>
     const musicNote = document.getElementById("music-note");
     const audio = document.getElementById("bg-music");
-    const body = document.body;
 
     window.addEventListener("click", function playMusic() {
       audio.play().then(() => {
         musicNote.style.display = "none";
-        body.classList.add("music-playing");
+        document.body.classList.add("music-playing");
       }).catch(() => {});
       window.removeEventListener("click", playMusic);
     });
@@ -93,5 +92,4 @@
     }
   </script>
 </body>
-        </html>
-        
+</html>
