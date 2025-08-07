@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot OpenRouter</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 10px;
+    }
+
+    #chat {
+      max-height: 80vh;
+      overflow-y: auto;
+      padding-bottom: 10px;
+    }
+
+    .msg { margin: 8px 0; }
+    .user { color: lightgreen; }
+    .bot  { color: lightblue; }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #inputArea {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #2196F3;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💬 Chatbot AI (OpenRouter)</h2>
+  <div id="chat"></div>
+
+  <div id="inputArea">
+    <input type="text" id="userInput" placeholder="Tulis pesan..."/>
+    <button onclick="send()">Kirim</button>
+  </div>
+
+  <script>
+    const API_KEY = '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';
+    const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+    const MODEL = 'openai/gpt-3.5-turbo';
+
+    async function send() {
+      const input = document.getElementById('userInput');
+      const chat = document.getElementById('chat');
+      const text = input.value.trim();
+      if (!text) return;
+
+      chat.innerHTML += `<div class="msg user"><b>Kamu:</b> ${text}</div>`;
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_KEY}`,
+            'HTTP-Referer': 'https://your-site.com',
+            'X-Title': 'ChatbotBelajar'
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            messages: [
+              { role: 'system', content: 'Kamu adalah asisten AI yang ramah dan membantu.' },
+              { role: 'user', content: text }
+            ]
+          })
+        });
+
+        const data = await res.json();
+        const reply = data.choices?.[0]?.message?.content || 'Gagal membalas.';
+        chat.innerHTML += `<div class="msg bot"><b>Bot:</b> ${reply}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+      } catch (err) {
+        chat.innerHTML += `<div class="msg bot"><b>Bot:</b> Error koneksi.</div>`;
+        console.error(err);
+      }
+    }
+  </script>
+
+</body>
+</html>
