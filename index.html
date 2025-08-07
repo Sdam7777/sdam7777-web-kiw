@@ -3,93 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grup WhatsApp Kita</title>
+  <title>Dokumentasi Grup WA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>😹 Dokumentasi Grup WhatsApp</h1>
+    <p id="music-note">📌 Ketuk layar GOBLOG...</p>
 
-  <header>
-    <h1>📱 Grup WhatsApp Keren</h1>
-    <p class="sub">Klik di layar untuk mulai musik & jelajahi anggota 👇</p>
-  </header>
-
-  <main>
-    <section class="group-photo">
+    <div class="group-photo">
       <img src="img/grup.jpg" alt="Foto Grup" />
-    </section>
+    </div>
 
-    <section class="members">
-      <div class="card" onclick="showNickname('Irpan')">
-        <h2>Irpan</h2>
-        <p class="phone">📞 +62 878-7608-2604</p>
-        <div class="sosmed">
-          <img src="img/whatsapp.png" alt="WA" />
-          <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-            <img src="img/instagram.png" alt="IG" />
-          </a>
-        </div>
+    <div class="member-list">
+      <div class="member" onclick="showNickname('Irpan')">
+        <strong>Irpan</strong><br>
+        📞 +62 878-7608-2604<br>
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
+        <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
+          <img src="img/instagram.png" class="icon" alt="IG" />
+        </a>
         <p id="nick-Irpan" class="nickname"></p>
       </div>
 
-      <div class="card" onclick="showNickname('Ripan')">
-        <h2>Ripan</h2>
-        <p class="phone">📞 +62 838-4112-1840</p>
-        <div class="sosmed">
-          <img src="img/whatsapp.png" alt="WA" />
-          <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-            <img src="img/instagram.png" alt="IG" />
-          </a>
-        </div>
+      <div class="member" onclick="showNickname('Ripan')">
+        <strong>Ripan</strong><br>
+        📞 +62 838-4112-1840<br>
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
+        <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
+          <img src="img/instagram.png" class="icon" alt="IG" />
+        </a>
         <p id="nick-Ripan" class="nickname"></p>
       </div>
 
-      <div class="card" onclick="showNickname('Ropi')">
-        <h2>Ropi</h2>
-        <p class="phone">📞 +62 812-1282-4475</p>
-        <div class="sosmed">
-          <img src="img/whatsapp.png" alt="WA" />
-          <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-            <img src="img/instagram.png" alt="IG" />
-          </a>
-        </div>
+      <div class="member" onclick="showNickname('Ropi')">
+        <strong>Ropi</strong><br>
+        📞 +62 812-1282-4475<br>
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
+        <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
+          <img src="img/instagram.png" class="icon" alt="IG" />
+        </a>
         <p id="nick-Ropi" class="nickname"></p>
       </div>
 
-      <div class="card" onclick="showNickname('Abdul')">
-        <h2>Abdul</h2>
-        <p class="phone">📞 +6285794963647</p>
-        <div class="sosmed">
-          <img src="img/whatsapp.png" alt="WA" />
-          <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-            <img src="img/instagram.png" alt="IG" />
-          </a>
-        </div>
+      <div class="member" onclick="showNickname('Abdul')">
+        <strong>Abdul</strong><br>
+        📞 +6285794963647<br>
+        <img src="img/whatsapp.png" class="icon" alt="WA" />
+        <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
+          <img src="img/instagram.png" class="icon" alt="IG" />
+        </a>
         <p id="nick-Abdul" class="nickname"></p>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
   <audio id="bg-music" loop>
     <source src="music/bg-music.mp3" type="audio/mpeg" />
+    Browser tidak mendukung audio.
   </audio>
 
   <footer>
-    <p>&copy; 2025 Dokumentasi Grup WhatsApp | Dibuat dengan ❤️</p>
+    <p>&copy; 2025 KONTOL DAN MEMEK. All rights reserved.</p>
   </footer>
 
   <script>
+    const musicNote = document.getElementById("music-note");
     const audio = document.getElementById("bg-music");
+
+    window.addEventListener("click", function playMusic() {
+      audio.play().then(() => {
+        musicNote.style.display = "none";
+        document.body.classList.add("music-playing");
+      }).catch(() => {});
+      window.removeEventListener("click", playMusic);
+    });
+
     const nicknames = {
       Irpan: "SEPUH DARI SEGALA SEPUH",
       Ripan: "SANG PENGENDALI PEREMPUAN",
       Ropi: "POCKY LOVE 😹",
       Abdul: "BANDAR DARI SEGALA BANDAR"
     };
-
-    window.addEventListener("click", function playAudio() {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", playAudio);
-    });
 
     function showNickname(name) {
       const el = document.getElementById(`nick-${name}`);
