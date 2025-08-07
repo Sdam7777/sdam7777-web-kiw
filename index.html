@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gemini Chat - Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    input {
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    button {
+      background: #2196F3;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1976D2;
+    }
+
+    #chatPage {
+      display: none;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #chatBox {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      background: #1c1c1c;
+    }
+
+    .message {
+      margin: 10px 0;
+    }
+
+    .user {
+      color: lightgreen;
+    }
+
+    .bot {
+      color: lightblue;
+    }
+
+    #inputArea {
+      display: flex;
+      padding: 10px;
+      background: #111;
+    }
+
+    #userInput {
+      flex: 1;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    #sendBtn {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div class="container" id="loginPage">
+    <h2>Login Admin</h2>
+    <input type="text" id="username" placeholder="Username"/>
+    <input type="password" id="password" placeholder="Password"/>
+    <button onclick="login()">Masuk</button>
+  </div>
+
+  <!-- Chat Page -->
+  <div id="chatPage">
+    <div id="chatBox"></div>
+    <div id="inputArea">
+      <input type="text" id="userInput" placeholder="Tulis pesan..."/>
+      <button id="sendBtn" onclick="sendMessage()">Kirim</button>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = 'AIzaSyD3cqashT331L8Vs8bNZpaQk1L8eSJ1G3s'; // <-- GANTI DENGAN KUNCI API-MU
+
+    function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if (u === 'admin' && p === '1234') {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('chatPage').style.display = 'flex';
+      } else {
+        alert('Login gagal! Username/password salah.');
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('userInput');
+      const chatBox = document.getElementById('chatBox');
+      const text = input.value.trim();
+      if (!text) return;
+
+      chatBox.innerHTML += `<div class="message user"><strong>Kamu:</strong> ${text}</div>`;
+      input.value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + API_KEY, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text }] }]
+        })
+      });
+
+      const data = await res.json();
+      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Gagal membalas.";
+      chatBox.innerHTML += `<div class="message bot"><strong>Bot:</strong> ${reply}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
