@@ -6,24 +6,22 @@
   <title>Dokumentasi Grup WA</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <button id="toggleMode">🌙 Mode Gelap</button>
-
+<body class="dark">
   <div class="container">
     <h1>Dokumentasi Grup WA</h1>
     <p id="music-note">📌 Pencet layar akan ada lagu...</p>
     
     <div class="group-photo">
-      <img src="images/grup.jpg" alt="Foto Grup" />
+      <img src="img/grup.jpg" alt="Foto Grup" />
     </div>
 
     <div class="member-list">
       <div class="member" onclick="showNickname('Irpan')">
         <strong>Irpan</strong><br>
         📞 +62 878-7608-2604<br>
-        <img src="images/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-          <img src="images/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" alt="IG" class="icon" />
         </a>
         <p id="nick-Irpan" class="nickname"></p>
       </div>
@@ -31,9 +29,9 @@
       <div class="member" onclick="showNickname('Ripan')">
         <strong>Ripan</strong><br>
         📞 +62 838-4112-1840<br>
-        <img src="images/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-          <img src="images/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" alt="IG" class="icon" />
         </a>
         <p id="nick-Ripan" class="nickname"></p>
       </div>
@@ -41,9 +39,9 @@
       <div class="member" onclick="showNickname('Ropi')">
         <strong>Ropi</strong><br>
         📞 +62 812-1282-4475<br>
-        <img src="images/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-          <img src="images/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" alt="IG" class="icon" />
         </a>
         <p id="nick-Ropi" class="nickname"></p>
       </div>
@@ -51,9 +49,9 @@
       <div class="member" onclick="showNickname('Abdul')">
         <strong>Abdul</strong><br>
         📞 +6285794963647<br>
-        <img src="images/whatsapp.png" alt="WA" class="icon" />
+        <img src="img/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-          <img src="images/instagram.png" alt="IG" class="icon" />
+          <img src="img/instagram.png" alt="IG" class="icon" />
         </a>
         <p id="nick-Abdul" class="nickname"></p>
       </div>
@@ -93,14 +91,7 @@
       const el = document.getElementById(`nick-${name}`);
       el.innerText = el.innerText === "" ? nicknames[name] : "";
     }
-
-    const toggleBtn = document.getElementById("toggleMode");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      toggleBtn.innerText = document.body.classList.contains("dark") 
-        ? "☀️ Mode Terang" : "🌙 Mode Gelap";
-    });
   </script>
 </body>
-            </html>
-          
+        </html>
+        
