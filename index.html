@@ -2,29 +2,44 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Grup WA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grup WhatsApp Kami</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="login-page">
-  <div class="login-container">
-    <h2>Login Grup WhatsApp</h2>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Masuk</button>
-    <p id="error" class="error-text"></p>
-  </div>
+<body>
+  <div class="container">
+    <h1>📸 Dokumentasi Grup WhatsApp</h1>
 
-  <script>
-    function login() {
-      const u = document.getElementById("username").value;
-      const p = document.getElementById("password").value;
-      if (u === "admin" && p === "1234") {
-        window.location.href = "dashboard.html";
-      } else {
-        document.getElementById("error").textContent = "Username atau Password salah!";
-      }
-    }
-  </script>
+    <div class="image-container">
+      <img src="img/grup.jpg" alt="Foto Grup WhatsApp">
+    </div>
+
+    <div class="member-list">
+      <h2>📱 Anggota Grup</h2>
+      <ul>
+        <li>
+          <strong>Abdul</strong><br>
+          <a href="https://wa.me/6285794963647" target="_blank">+62 857-9496-3647 (WA)</a> |
+          <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">Instagram</a>
+        </li>
+        <li>
+          <strong>Irpan</strong><br>
+          <a href="https://wa.me/6287876082604" target="_blank">+62 878-7608-2604 (WA)</a> |
+          <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">Instagram</a>
+        </li>
+        <li>
+          <strong>Ropi</strong><br>
+          <a href="https://wa.me/6281212824475" target="_blank">+62 812-1282-4475 (WA)</a> |
+          <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">Instagram</a>
+        </li>
+        <li>
+          <strong>Ripan</strong><br>
+          <a href="https://wa.me/6283841121840" target="_blank">+62 838-4112-1840 (WA)</a> |
+          <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">Instagram</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </body>
-</html>
+            </html>
+            
