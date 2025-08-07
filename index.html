@@ -2,50 +2,60 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grup WA Kami</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dokumentasi Grup WA</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="img/whatsapp.png" />
 </head>
 <body>
+  <button id="toggleMode">🌙 Mode Gelap</button>
+
   <div class="container">
-    <h1>📱 Grup WhatsApp Kami</h1>
-
-    <p id="music-note" class="music-info">🎵 Pencet layar untuk memutar lagu latar...</p>
-
+    <h1>Dokumentasi Grup WA</h1>
+    <p id="music-note">📌 Pencet layar akan ada lagu...</p>
+    
     <div class="group-photo">
-      <img src="img/grup.jpg" alt="Foto Grup" />
+      <img src="images/grup.jpg" alt="Foto Grup" />
     </div>
 
-    <h2>👤 Anggota Grup</h2>
-    <div class="members">
-      <div class="member">
-        <h3>Irpan</h3>
-        <p>📞 +62 878-7608-2604</p>
+    <div class="member-list">
+      <div class="member" onclick="showNickname('Irpan')">
+        <strong>Irpan</strong><br>
+        📞 +62 878-7608-2604<br>
+        <img src="images/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/fanz.world_?igsh=MWw3Yzd5a3AzZW4xdA==" target="_blank">
-          <img src="img/instagram.png" alt="Instagram" />
+          <img src="images/instagram.png" alt="IG" class="icon" />
         </a>
+        <p id="nick-Irpan" class="nickname"></p>
       </div>
-      <div class="member">
-        <h3>Ripan</h3>
-        <p>📞 +62 838-4112-1840</p>
+
+      <div class="member" onclick="showNickname('Ripan')">
+        <strong>Ripan</strong><br>
+        📞 +62 838-4112-1840<br>
+        <img src="images/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/vanzhazatt13_?igsh=MTlka3NhNXFkZnAy" target="_blank">
-          <img src="img/instagram.png" alt="Instagram" />
+          <img src="images/instagram.png" alt="IG" class="icon" />
         </a>
+        <p id="nick-Ripan" class="nickname"></p>
       </div>
-      <div class="member">
-        <h3>Ropi</h3>
-        <p>📞 +62 812-1282-4475</p>
+
+      <div class="member" onclick="showNickname('Ropi')">
+        <strong>Ropi</strong><br>
+        📞 +62 812-1282-4475<br>
+        <img src="images/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/scdltx?igsh=MWp1enU0Yzk2anhu" target="_blank">
-          <img src="img/instagram.png" alt="Instagram" />
+          <img src="images/instagram.png" alt="IG" class="icon" />
         </a>
+        <p id="nick-Ropi" class="nickname"></p>
       </div>
-      <div class="member">
-        <h3>Abdul</h3>
-        <p>📞 +62 857-9496-3647</p>
+
+      <div class="member" onclick="showNickname('Abdul')">
+        <strong>Abdul</strong><br>
+        📞 +6285794963647<br>
+        <img src="images/whatsapp.png" alt="WA" class="icon" />
         <a href="https://www.instagram.com/srepet_bletak?igsh=bTZsemp2cjBpb2Qy" target="_blank">
-          <img src="img/instagram.png" alt="Instagram" />
+          <img src="images/instagram.png" alt="IG" class="icon" />
         </a>
+        <p id="nick-Abdul" class="nickname"></p>
       </div>
     </div>
   </div>
@@ -55,16 +65,42 @@
     Browser tidak mendukung audio.
   </audio>
 
+  <footer>
+    <p>&copy; 2025 Grup WA Kami. All rights reserved.</p>
+  </footer>
+
   <script>
-    // Play music after first user interaction
-    const musicInfo = document.getElementById("music-note");
+    const musicNote = document.getElementById("music-note");
+    const audio = document.getElementById("bg-music");
+    const body = document.body;
+
     window.addEventListener("click", function playMusic() {
-      const audio = document.getElementById("bg-music");
       audio.play().then(() => {
-        if (musicInfo) musicInfo.style.display = "none";
+        musicNote.style.display = "none";
+        body.classList.add("music-playing");
       }).catch(() => {});
       window.removeEventListener("click", playMusic);
     });
+
+    const nicknames = {
+      Irpan: "SEPUH DARI SEGALA SEPUH",
+      Ripan: "SANG PENGENDALI PEREMPUAN",
+      Ropi: "POCKY LOVE 😹",
+      Abdul: "BANDAR DARI SEGALA BANDAR"
+    };
+
+    function showNickname(name) {
+      const el = document.getElementById(`nick-${name}`);
+      el.innerText = el.innerText === "" ? nicknames[name] : "";
+    }
+
+    const toggleBtn = document.getElementById("toggleMode");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.innerText = document.body.classList.contains("dark") 
+        ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+    });
   </script>
 </body>
-</html>
+            </html>
+          
