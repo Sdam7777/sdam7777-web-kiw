@@ -1,100 +1,49 @@
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: #e0f2ff;
-  color: #222;
-  transition: background 0.5s, color 0.5s;
-}
-
-.dark {
-  background: #111;
-  color: #eee;
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
 .container {
-  padding: 1.5rem;
+  padding: 20px;
   max-width: 800px;
   margin: auto;
-  text-align: center;
-}
-
-h1 {
-  margin-bottom: 0.5rem;
-  color: #0077cc;
-}
-
-#toggleMode {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 0.4rem 0.8rem;
-  background: #0077cc;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
 .group-photo img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-}
-
-.member-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .member {
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-  cursor: pointer;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  transition: transform 0.2s ease;
 }
 
 .member:hover {
-  transform: scale(1.02);
-}
-
-.dark .member {
-  background: #222;
+  transform: scale(1.01);
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
+  width: 24px;
+  height: 24px;
   vertical-align: middle;
+  margin: 5px 5px 0 0;
 }
 
 .nickname {
-  margin-top: 0.5rem;
-  font-weight: bold;
-  color: #0077cc;
+  font-style: italic;
+  margin-top: 5px;
+  color: #90caf9;
 }
 
 footer {
-  margin-top: 2rem;
   text-align: center;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.music-playing {
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 10px #00c3ff;
-  }
-  100% {
-    box-shadow: 0 0 20px #00c3ff, 0 0 40px #00c3ff;
-  }
+  padding: 20px;
+  font-size: 14px;
+  color: #aaa;
 }
